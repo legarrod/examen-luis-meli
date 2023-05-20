@@ -1,0 +1,58 @@
+$primary-color: #FFE600;
+$black-color: #333333;
+$dark-gray-color: #666666;
+$light-grey-color: #999999;
+$light-color: #EEEEEE;
+$blue-buttons: #3483FA;
+
+$pdp-price-product: 46px;
+$pdp-title-product: 24px;
+$pdp-minmum-text: 14px;
+$pdp-title-description: 28px;
+$pdp-text-description: 16px;
+$navitacion-search-text: 18px;
+
+$plp-breadcrub-text: 14px;
+$plp-card-price: 24px;
+$plp-card-description: 18px;
+$plp-card-more-text: 12px;
+$max-width-custom: 1000px;
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('https://http2.mlstatic.com/ui/webfonts/v3.0.0/proxima-nova/proximanova-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima Nova Semi Bold';
+  src: url('https://http2.mlstatic.com/ui/webfonts/v3.0.0/proxima-nova/proximanova-regular.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('https://http2.mlstatic.com/ui/webfonts/v3.0.0/proxima-nova/proximanova-semibold.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+:export {
+  primaryColor: $primary-color;
+  black-color: $black-color;
+  dark-gray-color: $dark-gray-color;
+  light-grey-color: $light-grey-color;
+  light-color: $light-color;
+  blue-buttons: $blue-buttons;
+  pdp-price-product: $pdp-price-product;
+  pdp-title-product: $pdp-title-product;
+  pdp-minmum-text: $pdp-minmum-text;
+  pdp-title-description: $pdp-title-description;
+  pdp-text-description: $pdp-text-description;
+  navitacion-search-text: $navitacion-search-text;
+  plp-breadcrub-text: $plp-breadcrub-text;
+  plp-card-price: $plp-card-price;
+  plp-card-description: $plp-card-description;
+  plp-card-more-text: $plp-card-more-text;
+  max-width-custom: $max-width-custom;
+}
+

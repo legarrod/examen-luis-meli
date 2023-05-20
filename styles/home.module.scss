@@ -1,0 +1,109 @@
+@import "variables.module.scss";
+
+.main {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-width: $max-width-custom;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #FFFFFF;
+  padding: 0 16px 0 16px;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: center;
+  margin: 16px 0 16px 0;
+  align-items: center;
+  border-bottom: solid 2px $light-color;
+
+  @media (min-width: 768px) {
+    // Tablet
+
+  }
+
+  @media (min-width: 1024px) {
+    // Desktop
+
+  }
+
+  .cardImageSection {
+    margin: 0 16px 0 16px;
+    img {
+      height: 180px;
+      width: 180px;
+      object-fit: cover;
+    }
+  }
+  .cardInformationSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .cardTitleSection {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      align-items: start;
+      justify-content: space-between;
+
+      .plpCardPrice {
+        color: $dark-gray-color;
+        font-size: $plp-card-price;
+        margin: 0 0 0 0;
+      }
+      .plpCardExtra {
+        color: $light-grey-color;
+        font-size: $plp-card-more-text;
+        margin: 0 0 0 0;
+      }
+      @media (min-width: 768px) {
+        // Tablet
+        flex-direction: row;
+        align-items: center;
+        .plpCardPrice {
+            color: $dark-gray-color;
+            font-size: $plp-card-price;
+            margin: 0 0 32px 0;
+          }
+          .plpCardExtra {
+            color: $light-grey-color;
+            font-size: $plp-card-more-text;
+            margin: 0 0 32px 0;
+          }
+      }
+    
+      @media (min-width: 1024px) {
+        // Desktop
+        flex-direction: row;
+        .plpCardPrice {
+            color: $dark-gray-color;
+            font-size: $plp-card-price;
+            margin: 0 0 32px 0;
+          }
+          .plpCardExtra {
+            color: $light-grey-color;
+            font-size: $plp-card-more-text;
+            margin: 0 0 32px 0;
+          }
+      }
+    }
+
+    .plpCardTitle {
+        display: flex;
+        width: 50%;
+      color: $dark-gray-color;
+      font-size: $plp-card-description;
+      margin: 0;
+    }
+  }
+}
