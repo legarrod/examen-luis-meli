@@ -8,4 +8,7 @@
     font-family: 'Proxima Nova Semi Bold', sans-serif;
     background-color: $light-color;
     color: $dark-gray-color;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

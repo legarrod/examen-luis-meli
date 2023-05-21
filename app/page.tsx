@@ -1,36 +1,34 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import style from '../styles/home.module.scss'
-import Image from 'next/image'
 import { getDefaultProducts } from '../server/service.getproducts'
-import { transformNUmber } from '../utils/utils'
+import Image from 'next/image'
+import Link from 'next/link'
+import { replaceLink } from '../utils/utils'
 
 export default async function Home () {
-  const productoList = await getDefaultProducts()
+  const productList = await getDefaultProducts('query')
+
   return (
     <main className={style.main}>
-      <p>Home</p>
+      <p>Más vendidos</p>
       <div className={style.cardContainer}>
-        {productoList?.results.length &&
-          productoList?.results.map((product: any) => (
+        {productList?.items &&
+          productList?.items?.map((product: any) => (
             <div key={product?.id} className={style.card}>
-              <div className={style.cardImageSection}>
+              <Link className={style.plpCardLink} href={`/${replaceLink(product?.title)}-${product?.id}`}>
                 <Image
-                  src={product?.thumbnail}
-                  width={180}
-                  height={180}
+                  src={product?.picture}
+                  width={100}
+                  height={100}
                   alt='Inicio'
                   loading='lazy'
                 />
-              </div>
-              <div className={style.cardInformationSection}>
-                <div className={style.cardTitleSection}>
-                  <p className={style.plpCardPrice}>$ {transformNUmber(product?.price)}</p>
-                  <p className={style.plpCardExtra}>{product?.address?.state_name}</p>
-                </div>
-                <h2 className={style.plpCardTitle}>{product?.title}</h2>
-              </div>
+              </Link>
             </div>
           ))}
+      </div>
+      <div>
+        <p>Aún no hay resultados de búsqueda</p>
       </div>
     </main>
   )

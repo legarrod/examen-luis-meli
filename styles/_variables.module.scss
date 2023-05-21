@@ -7,6 +7,7 @@ $blue-buttons: #3483FA;
 
 $pdp-price-product: 46px;
 $pdp-title-product: 24px;
+$pdp-buy-button: 24px;
 $pdp-minmum-text: 14px;
 $pdp-title-description: 28px;
 $pdp-text-description: 16px;
@@ -17,6 +18,9 @@ $plp-card-price: 24px;
 $plp-card-description: 18px;
 $plp-card-more-text: 12px;
 $max-width-custom: 1000px;
+$margin-custom-32: 32px;
+
+$breadcrumb-minmum-text: 14px;
 
 @font-face {
   font-family: 'Proxima Nova';
@@ -54,5 +58,8 @@ $max-width-custom: 1000px;
   plp-card-description: $plp-card-description;
   plp-card-more-text: $plp-card-more-text;
   max-width-custom: $max-width-custom;
+  pdp-buy-button: $pdp-buy-button;
+  margin-custom-32: $margin-custom-32;
+  breadcrumb-minmum-text: $breadcrumb-minmum-text;
 }
 

@@ -1,0 +1,26 @@
+@import "variables.module.scss";
+
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  background-color: white;
+  margin-top: 60px;
+  
+  footer{
+    display: flex;
+    max-width: $max-width-custom;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  strong {
+    margin: 0;
+  }
+  p{
+    margin: 0;
+    margin-left: 12px;
+  }
+}

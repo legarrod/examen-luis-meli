@@ -1,0 +1,12 @@
+@import "variables.module.scss";
+
+
+.wrapperBreadcrumb{
+    margin: 10px 0;
+    a{
+        margin: 0;
+        font-size: $breadcrumb-minmum-text;
+        text-decoration: none;
+        color: $light-grey-color;
+    }
+}
