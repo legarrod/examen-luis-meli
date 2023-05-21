@@ -5,10 +5,10 @@
   position: relative;
   flex-direction: column;
   max-width: $max-width-custom;
-  margin-top: 30px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  flex-grow: 1;
 }
 
 .cardContainer {

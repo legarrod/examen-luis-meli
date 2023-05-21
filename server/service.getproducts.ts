@@ -32,7 +32,7 @@ export const getDefaultProducts = async (queryParams: string) => {
         name: authorName,
         lastname: authorLastname
       },
-      categories: formatCategories,
+      categories: formatCategories.length ? formatCategories : [queryParams],
       items: formatItem
     }
 
@@ -47,10 +47,16 @@ export const getDescripcionById = (param: string | undefined) => {
     .then(res => res.json())
 }
 
+export const getCategoryById = (param: string | undefined) => {
+  return fetch(`https://api.mercadolibre.com/categories/${param}`)
+    .then(res => res.json())
+}
+
 export const getProductById = async (param: string | undefined) => {
   const productInformation: any = await fetch(`https://api.mercadolibre.com/items/${param}`)
     .then(res => res.json())
   const descripcionResponse = await getDescripcionById(param)
+  const category = await getCategoryById(productInformation?.category_id)
 
   if (productInformation) {
     const dataTransmormed: IproductResponse = {
@@ -67,12 +73,13 @@ export const getProductById = async (param: string | undefined) => {
           decimals: parseInt((productInformation?.price % 1).toFixed(2).split('.')[1])
         },
         thumbnail: productInformation?.thumbnail || imagNotFound,
-        picture: productInformation?.pictures[0]?.url || imagNotFound,
+        picture: productInformation?.pictures?.length ? productInformation?.pictures[0]?.url : imagNotFound,
         condition: productInformation?.condition,
         free_shipping: productInformation?.shipping?.free_shipping,
         sold_quantity: productInformation?.sold_quantity,
         description: descripcionResponse?.plain_text,
-        permalink: productInformation?.permalink
+        permalink: productInformation?.permalink,
+        categories: category?.name ? [category?.name] : []
       }
     }
 

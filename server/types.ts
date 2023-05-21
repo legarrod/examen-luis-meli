@@ -20,6 +20,7 @@ interface IItem{
     description: string
     thumbnail: string
     permalink: string
+    categories: any
 }
 
 export interface IproductResponse {
@@ -35,6 +36,7 @@ interface IPriceSearchResult {
 
 interface IItemSearhResult {
     map(arg0: (product: any) => import('react').JSX.Element): import('react').ReactNode
+    length(arg0: (product: any) => import('react').JSX.Element): import('react').ReactNode
     id: string
     title: string
     price: IPriceSearchResult

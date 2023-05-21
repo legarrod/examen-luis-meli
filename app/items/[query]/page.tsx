@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-closing-tag-location */
+import { Suspense } from 'react'
 import { transformNumber, replaceLink } from '../../../utils/utils'
 import { getDefaultProducts } from '../../../server/service.getproducts'
 import style from '../../../styles/searchresult.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb'
 
 export async function generateMetadata (
-  { params }: { params: { query: string } },
-  parent?: ResolvingMetadata
+  { params }: { params: { query: string } }
 ): Promise<Metadata> {
   const { query } = params
 
@@ -47,36 +47,38 @@ const Page = async ({ params }: { params: any }) => {
   return (
     <main className={style.main}>
       <Breadcrumb producInformtation={productList} />
-      <div className={style.cardContainer}>
-        {productList?.items
-          ? productList?.items.map((product: any) => (
-            <div key={product?.id} className={style.card}>
-              <div className={style.cardImageSection}>
-                <Link className={style.plpCardLink} href={`/${replaceLink(product?.title)}-${product?.id}`}>
-                  <Image
-                    src={product?.picture}
-                    width={180}
-                    height={180}
-                    alt='Inicio'
-                    loading='lazy'
-                  />
-                </Link>
-              </div>
-              <div className={style.cardInformationSection}>
-                <div className={style.cardTitleSection}>
-                  <p className={style.plpCardPrice}>$ {transformNumber(product?.price?.amount)}</p>
-                  <p className={style.plpCardExtra}>{product?.address?.state_name}</p>
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <div className={style.cardContainer}>
+          {productList?.items?.length
+            ? productList?.items.map((product: any) => (
+              <div key={product?.id} className={style.card}>
+                <div className={style.cardImageSection}>
+                  <Link className={style.plpCardLink} href={`/${replaceLink(product?.title)}-${product?.id}`}>
+                    <Image
+                      src={product?.picture}
+                      width={180}
+                      height={180}
+                      alt='Inicio'
+                      loading='lazy'
+                    />
+                  </Link>
                 </div>
-                <Link className={style.plpCardLink} href={`/${replaceLink(product?.title)}-${product?.id}`}>
-                  <h2 className={style.plpCardTitle}>{product?.title}</h2>
-                </Link>
+                <div className={style.cardInformationSection}>
+                  <div className={style.cardTitleSection}>
+                    <p className={style.plpCardPrice}>$ {transformNumber(product?.price?.amount)}</p>
+                    <p className={style.plpCardExtra}>{product?.address?.state_name}</p>
+                  </div>
+                  <Link className={style.plpCardLink} href={`/${replaceLink(product?.title)}-${product?.id}`}>
+                    <h2 className={style.plpCardTitle}>{product?.title}</h2>
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))
-          : <div>
-            <p>No hay resultados de busqueda</p>
-          </div>}
-      </div>
+            ))
+            : <div>
+              <p>No hay resultados de busqueda</p>
+            </div>}
+        </div>
+      </Suspense>
     </main>
   )
 }

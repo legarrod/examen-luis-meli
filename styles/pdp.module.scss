@@ -1,6 +1,6 @@
 @import "variables.module.scss";
 
-.pdpMain {
+.pdpWrapperMain{
   display: flex;
   position: relative;
   flex-direction: column;
@@ -10,87 +10,98 @@
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-
-  .pdpPrincipalSection {
+  .pdpMain {
     display: flex;
+    position: relative;
     flex-direction: column;
-    .pdpWtapperImage {
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    background-color: white;
+    padding-top: 10px;
+  
+    .pdpPrincipalSection {
       display: flex;
-      justify-content: center;
-    }
-    .pdpBillInformation {
-      margin-left: 20px;
-      .pdpBuyLink {
+      flex-direction: column;
+      .pdpWtapperImage {
         display: flex;
-        width: 100%;
+        justify-content: center;
+      }
+      .pdpBillInformation {
+        margin-left: 20px;
+        .pdpBuyLink {
+          display: flex;
+          width: 100%;
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
+  
+      img {
+        object-fit: contain;
+        width: 400px;
+        height: 400px;
+        background-color: white;
+      }
+  
+      @media (min-width: 768px) {
+        // Tablet
+        flex-direction: row;
+        flex-wrap: wrap;
+        img {
+          object-fit: contain;
+          width: 680px;
+          height: 680px;
+        }
+      }
+  
+      @media (min-width: 1024px) {
+        // Desktop
+        flex-direction: row;
+        flex-wrap: nowrap;
+        img {
+          object-fit: contain;
+          width: 680px;
+          height: 680px;
+        }
+      }
+      .pdpInfo {
+        font-size: $pdp-minmum-text;
+        margin: $margin-custom-32 0 16px 0;
+      }
+      .pdpName {
+        font-size: $pdp-title-product;
+        margin: 0;
+      }
+      .pdpPrice {
+        font-size: $pdp-price-product;
+        margin: 36px 0;
+      }
+      .pdpBuyButton {
+        background-color: $blue-buttons;
+        color: white;
+        font-size: $pdp-buy-button;
+        border: none;
+        border-radius: 8px;
+        padding: 7px 60px;
+        margin-right: $margin-custom-32;
         cursor: pointer;
-        text-decoration: none;
       }
     }
-
-    img {
-      object-fit: contain;
-      width: 400px;
-      height: 400px;
-      background-color: white;
-    }
-
-    @media (min-width: 768px) {
-      // Tablet
-      flex-direction: row;
-      flex-wrap: wrap;
-      img {
-        object-fit: contain;
-        width: 680px;
-        height: 680px;
+    .pdpDescriptionSection {
+      display: flex;
+      flex-direction: column;
+      width: 65%;
+      margin-top: 40px;
+      .pdpTittleDescription {
+        font-size: $pdp-title-description;
+        margin: 0 0 $margin-custom-32 $margin-custom-32;
       }
-    }
-
-    @media (min-width: 1024px) {
-      // Desktop
-      flex-direction: row;
-      flex-wrap: nowrap;
-      img {
-        object-fit: contain;
-        width: 680px;
-        height: 680px;
+      .pdpTextDescription {
+        font-size: $pdp-text-description;
+        margin: 0 0 $margin-custom-32 $margin-custom-32;
       }
-    }
-    .pdpInfo {
-      font-size: $pdp-minmum-text;
-      margin: $margin-custom-32 0 16px 0;
-    }
-    .pdpName {
-      font-size: $pdp-title-product;
-      margin: 0;
-    }
-    .pdpPrice {
-      font-size: $pdp-price-product;
-      margin: 36px 0;
-    }
-    .pdpBuyButton {
-      background-color: $blue-buttons;
-      color: white;
-      font-size: $pdp-buy-button;
-      border: none;
-      border-radius: 8px;
-      padding: 7px 60px;
-      margin-right: $margin-custom-32;
-      cursor: pointer;
-    }
-  }
-  .pdpDescriptionSection {
-    display: flex;
-    flex-direction: column;
-    width: 65%;
-    margin-top: 40px;
-    .pdpTittleDescription {
-      font-size: $pdp-title-description;
-      margin: 0 0 $margin-custom-32 $margin-custom-32;
-    }
-    .pdpTextDescription {
-      font-size: $pdp-text-description;
-      margin: 0 0 $margin-custom-32 $margin-custom-32;
     }
   }
 }
+

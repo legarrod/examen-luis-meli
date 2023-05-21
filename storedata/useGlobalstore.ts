@@ -7,6 +7,8 @@ export const useGlobalstore = create((set: any) => {
     getingData: true,
     setGetingData: (newstate: boolean) => set({ getingData: newstate }),
     productList: { results: [] },
-    setpProductList: (newstate: any) => set({ productList: newstate })
+    setpProductList: (newstate: any) => set({ productList: newstate }),
+    breadcrumbSearch: '/',
+    setBreadcrumbSearch: (newstate: string | undefined) => set({ breadcrumbSearch: newstate })
   }
 })

@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { getDefaultProducts } from '../../server/service.getproducts'
 import Link from 'next/link'
 import { formtaOriginalText } from '../../utils/utils'
+import Cookies from 'js-cookie'
 
 const InputSearch = () => {
   const router: any = useRouter()
@@ -20,6 +21,7 @@ const InputSearch = () => {
     setpProductList
   } = useGlobalstore()
   const [isLoading, setIsLoading] = useState(true)
+  const [getResult, setgetResult] = useState('/')
 
   const fnGetdata = useCallback(async () => {
     setGetingData(false)
@@ -34,14 +36,18 @@ const InputSearch = () => {
       router.push(destination)
     }
   }
+  const handlerChangeInput = (value: string) => {
+    setProductToSearch(value)
+    Cookies.set('searchText', value)
+  }
 
   useEffect(() => {
     if (pathName.includes('/items/') && isLoading) {
       const partes = pathName.split('/')
       const query = partes[partes.length - 1]
-
       setProductToSearch(formtaOriginalText(query.replaceAll('-', ' ')))
       setIsLoading(false)
+      setgetResult('/items/all')
     }
   }, [pathName, isLoading, setProductToSearch])
 
@@ -57,12 +63,12 @@ const InputSearch = () => {
         className={style['search-input']}
         value={productToSearch}
         placeholder='Nunca dejes de buscar'
-        onChange={(e) => setProductToSearch(e.target.value)}
+        onChange={(e) => handlerChangeInput(e.target.value)}
         onKeyDown={(e) => fnGetKeyPress(e)}
       />
       <Link
         className={style.linkSearch}
-        href={`${productToSearch !== '' ? `/items/${productToSearch}` : '/'}`}
+        href={`${productToSearch !== '' ? `/items/${productToSearch}` : getResult}`}
       >
         <button>
           <Image src={iconSearch} width={20} height={20} alt='Buscar' />
