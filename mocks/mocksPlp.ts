@@ -1,4 +1,4 @@
-export const mockGetHomeProducts = {
+export const mockGetPlp = {
   site_id: 'MLA',
   country_default_time_zone: 'GMT-03:00',
   query: ' :query',

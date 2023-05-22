@@ -6,6 +6,7 @@ export const transformNumber = (number: number | undefined = 0) => {
 
 export const replaceLink = (url: string) => {
   let urlAmigable = url?.replace(/ /g, '-')
+  urlAmigable = urlAmigable?.replace('/', '-')
   urlAmigable = urlAmigable?.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
   return urlAmigable
 }

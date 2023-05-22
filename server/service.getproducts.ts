@@ -32,7 +32,7 @@ export const getDefaultProducts = async (queryParams: string) => {
         name: authorName,
         lastname: authorLastname
       },
-      categories: formatCategories.length ? formatCategories : [queryParams],
+      categories: formatCategories?.length ? formatCategories : [queryParams],
       items: formatItem
     }
 
