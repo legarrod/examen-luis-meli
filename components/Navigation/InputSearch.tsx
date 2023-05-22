@@ -21,7 +21,7 @@ const InputSearch = () => {
     setpProductList
   } = useGlobalstore()
   const [isLoading, setIsLoading] = useState(true)
-  const [getResult, setgetResult] = useState('/')
+  const [getResult, setgetResult] = useState('/#')
 
   const fnGetdata = useCallback(async () => {
     setGetingData(false)
@@ -30,24 +30,33 @@ const InputSearch = () => {
   }, [setGetingData, setpProductList, productToSearch])
 
   const fnGetKeyPress = (e: any) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && productToSearch !== '') {
       const destination =
         productToSearch !== '' ? `/items/${productToSearch}` : '/'
       router.push(destination)
     }
   }
+
   const handlerChangeInput = (value: string) => {
     setProductToSearch(value)
     Cookies.set('searchText', value)
   }
 
   useEffect(() => {
-    if (pathName.includes('/items/') && isLoading) {
+    if (pathName.includes('/items/')) {
       const partes = pathName.split('/')
       const query = partes[partes.length - 1]
+      const lastSlashIndex = pathName.lastIndexOf('/')
       setProductToSearch(formtaOriginalText(query.replaceAll('-', ' ')))
       setIsLoading(false)
-      setgetResult('/items/all')
+      if (lastSlashIndex !== -1 && lastSlashIndex < pathName.length - 1) {
+        setgetResult(`/items/${pathName.substring(lastSlashIndex + 1)}`)
+      }
+    } else {
+      const lastSlashIndex = pathName.lastIndexOf('/')
+      if (lastSlashIndex !== -1 && lastSlashIndex < pathName.length - 1) {
+        setgetResult(`/${pathName.substring(lastSlashIndex + 1)}`)
+      }
     }
   }, [pathName, isLoading, setProductToSearch])
 
