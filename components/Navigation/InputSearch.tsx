@@ -39,7 +39,7 @@ const InputSearch = () => {
 
   const handlerChangeInput = (value: string) => {
     setProductToSearch(value)
-    Cookies.set('searchText', value)
+    Cookies.set('searchText', value, { expires: 1 })
   }
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const Breadcrumb = ({ producInformtation }: any) => {
 
   useEffect(() => {
     if (pathName.includes('/items/') === false) {
-      setBreadcrumbSearch(`/items/${storedSearchText}`)
+      storedSearchText === undefined ? setBreadcrumbSearch('/') : setBreadcrumbSearch(`/items/${storedSearchText}`)
     } else {
       setBreadcrumbSearch('/')
     }
